@@ -25,6 +25,10 @@ jobs:
             pip install pytest pytest-qt PyQt5
             pip install pytest pytest-xvfb pyautogui
       - run:
+          name: Setup PYTHONPATH
+          command: |
+            export PYTHONPATH="$PYTHONPATH:/home/circleci/project"
+      - run:
           name: Run tests with Xvfb and PyAutoGUI
           command: |
            . venv/bin/activate
