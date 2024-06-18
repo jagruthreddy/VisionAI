@@ -4,6 +4,8 @@ executors:
   python-executor:
     docker:
       - image: circleci/python:3.10
+    environment:
+      DISPLAY: :99
 
 jobs:
   build:
