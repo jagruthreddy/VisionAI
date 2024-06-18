@@ -16,18 +16,17 @@ jobs:
           name: Install dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install -y xvfb
+            sudo apt-get install -y xvfb libxi-dev libxtst-dev xdotool
             python -m venv venv
-            . venv/bin/activate
+           . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            pip install pytest-qt
-            pip install pytest pytest-qt PyQt5
+            pip install pytest pytest-xvfb pyautogui
       - run:
-          name: Run tests with Xvfb
+          name: Run tests with Xvfb and PyAutoGUI
           command: |
-            . venv/bin/activate
-            xvfb-run -a pytest tests/
+           . venv/bin/activate
+            xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py::TestAI_NumberOfOutputs.test_AI_Method_NumberOfOutputs
 
 workflows:
   version: 2
