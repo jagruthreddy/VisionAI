@@ -1,10 +1,11 @@
 import unittest
-from PyQt5.QtWidgets import QApplication
 import sys
 import os
-import numpy as np
+
+from PyQt5.QtWidgets import QApplication
 from PIL import Image
 
+# Add the path to your main application directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from view.MainView import MainWindow
@@ -14,6 +15,7 @@ from controller.AI import AI
 class TestAI_NumberOfOutputs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        # Initialize QApplication before creating any QWidget instances
         cls.app = QApplication(sys.argv)
     
     def setUp(self):
@@ -40,7 +42,7 @@ class TestAI_NumberOfOutputs(unittest.TestCase):
 
         # Verify the prediction length
         self.assertEqual(len(prediction), 6, "The prediction should have 6 elements")  # Adjust if needed
-    
+
     @classmethod
     def tearDownClass(cls):
         del cls.app
