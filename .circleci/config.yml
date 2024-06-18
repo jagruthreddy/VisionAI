@@ -35,6 +35,14 @@ jobs:
           command: |
            . venv/bin/activate
            xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py -v
+           xvfb-run -a pytest tests/test_AI_PredictedCity.py -v
+           xvfb-run -a pytest tests/test_AI_Preprocessing.py -v
+           xvfb-run -a pytest tests/test_ButtonPanel.py -v
+           xvfb-run -a pytest tests/test_IconsExist.py -v
+           xvfb-run -a pytest tests/test_InformationDialog.py -v
+           xvfb-run -a pytest tests/test_ModelExist.py -v
+           xvfb-run -a pytest tests/test_SelectMethod.py -v
+           xvfb-run -a pytest tests/test_sort_button.py -v
 
 workflows:
   version: 2
