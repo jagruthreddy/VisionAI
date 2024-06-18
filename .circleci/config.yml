@@ -3,35 +3,39 @@ version: 2.1
 executors:
   python-executor:
     docker:
-      - image: cimg/python:3.10
+      - image: circleci/python:3.10
     environment:
       DISPLAY: :99
-      PIP_PROGRESS_BAR: 'off' # Disabling the progress bar
+
+  docker-executor:
+    docker:
+      - image: docker:20.10.7
+    environment:
+      DOCKER_USER: $DOCKER_USER
 
 jobs:
+
   build-and-test:
     executor: python-executor
     steps:
       - checkout
       - run:
-          name: Install system dependencies
+          name: Install dependencies
           command: |
             sudo apt-get update
+            sudo apt-get install -y xvfb libxi-dev libxtst-dev xdotool
             sudo apt-get install -y xvfb libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 x11-utils
-      - run:
-          name: Install Python dependencies
-          command: |
             python -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            pip install pytest pytest-qt PyQt5 pytest-xvfb
+            pip install pytest-qt
+            pip install pytest pytest-qt PyQt5
+            pip install pytest pytest-xvfb pyautogui
       - run:
-          name: Set up environment
+          name: Setup PYTHONPATH
           command: |
-            echo 'export PYTHONPATH="$PYTHONPATH:$(pwd)"' >> $BASH_ENV
-            echo 'export QT_QPA_PLATFORM=offscreen' >> $BASH_ENV
-            source $BASH_ENV
+            export PYTHONPATH="$PYTHONPATH:/home/circleci/project"
       - run:
           name: Run tests
           command: |
@@ -45,14 +49,19 @@ jobs:
             xvfb-run -a pytest tests/test_ModelExist.py -v
             xvfb-run -a pytest tests/test_SelectMethod.py -v
             xvfb-run -a pytest tests/test_sort_button.py -v
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
 
   build-and-push:
-    docker:
-      - image: docker:20.10.7
+    executor: docker-executor
     steps:
+      - checkout
       - setup_remote_docker:
           version: 20.10.7
-      - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: Build Docker image
           command: docker build -t $DOCKER_USER/vision_ai:${CIRCLE_SHA1} .
