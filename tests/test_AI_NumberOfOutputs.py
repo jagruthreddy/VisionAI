@@ -14,10 +14,7 @@ from controller.AI import AI
 class TestAI_NumberOfOutputs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        if not QApplication.instance():
-            cls.app = QApplication(sys.argv)
-        else:
-            cls.app = QApplication.instance()
+        cls.app = QApplication.instance() or QApplication(sys.argv)
     
     def setUp(self):
         self.window = MainWindow(initial_folder=".")
@@ -37,8 +34,7 @@ class TestAI_NumberOfOutputs(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        if hasattr(cls, 'app'):
-            del cls.app
+        cls.app.quit()
 
 if __name__ == '__main__':
     unittest.main()
