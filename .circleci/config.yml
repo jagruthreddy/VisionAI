@@ -17,6 +17,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y xvfb libxi-dev libxtst-dev xdotool
+            sudo apt-get install -y xvfb libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 x11-utils
             python -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
@@ -24,6 +25,7 @@ jobs:
             pip install pytest-qt
             pip install pytest pytest-qt PyQt5
             pip install pytest pytest-xvfb pyautogui
+            pip install pytest pytest-qt PyQt5 pytest-xvfb
       - run:
           name: Setup PYTHONPATH
           command: |
@@ -32,7 +34,7 @@ jobs:
           name: Run tests with Xvfb and PyAutoGUI
           command: |
            . venv/bin/activate
-           xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py::TestAI_NumberOfOutputs.test_AI_Method_NumberOfOutputs
+           xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py -v
 
 workflows:
   version: 2
