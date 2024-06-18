@@ -5,7 +5,6 @@ import os
 import numpy as np
 from PIL import Image
 import pytest
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from view.MainView import MainWindow
 from view.SelectMethod import SelectMethod
