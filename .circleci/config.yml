@@ -6,6 +6,7 @@ executors:
       - image: cimg/python:3.10
     environment:
       DISPLAY: :99
+      PIP_PROGRESS_BAR: 'off' # Disabling the progress bar
 
 jobs:
   build-and-test:
