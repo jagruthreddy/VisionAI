@@ -1,3 +1,16 @@
+import unittest
+from PyQt5.QtWidgets import QApplication
+import sys
+import os
+import numpy as np
+from PIL import Image
+import pytest
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from view.MainView import MainWindow
+from view.SelectMethod import SelectMethod
+from controller.AI import AI
+
 @pytest.mark.usefixtures("qapp")
 class TestAI_NumberOfOutputs(unittest.TestCase):
 
