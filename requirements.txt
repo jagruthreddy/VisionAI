@@ -5,7 +5,10 @@ pyqt5-qt5==5.15.2
 pyqt5-sip==12.13.0
 pytest==8.2.2
 pytest-qt==4.4.0
-pywin32==306
+
+# Windows-specific dependency
+pywin32==306; sys_platform == 'win32'
+
 onnxruntime==1.18.0
 
 
