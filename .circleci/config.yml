@@ -28,7 +28,7 @@ jobs:
           name: Run tests with Xvfb and PyAutoGUI
           command: |
            . venv/bin/activate
-            xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py::TestAI_NumberOfOutputs.test_AI_Method_NumberOfOutputs
+           xvfb-run -a pytest tests/test_AI_NumberOfOutputs.py::TestAI_NumberOfOutputs.test_AI_Method_NumberOfOutputs
 
 workflows:
   version: 2
