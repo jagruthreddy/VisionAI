@@ -10,11 +10,14 @@ from view.MainView import MainWindow
 from view.SelectMethod import SelectMethod
 from controller.AI import AI
 
+@pytest.mark.usefixtures("qapp")
 class TestAI_NumberOfOutputs(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.app = QApplication(sys.argv)
-    
+
+    @pytest.fixture(scope="class", autouse=True)
+    def qapp_fixture(self, qapp):
+        """Fixture for the QApplication"""
+        self.qapp = qapp
+
     def setUp(self):
         self.window = MainWindow(initial_folder=".")
         self.select_method = SelectMethod(self.window)
@@ -30,10 +33,6 @@ class TestAI_NumberOfOutputs(unittest.TestCase):
         prediction = ai_instance.classify_image(test_image_path)
         print(f"Prediction: {prediction}")
         self.assertEqual(len(prediction), 6, "The prediction should have 6 elements")
-    
-    @classmethod
-    def tearDownClass(cls):
-        del cls.app
 
 if __name__ == '__main__':
     unittest.main()
