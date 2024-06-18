@@ -10,8 +10,6 @@ executors:
   docker-executor:
     docker:
       - image: docker:20.10.7
-    environment:
-      DOCKER_USER: $DOCKER_USER
 
 jobs:
 
