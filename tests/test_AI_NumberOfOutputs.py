@@ -5,14 +5,16 @@ import os
 import numpy as np
 from PIL import Image
 import pytest
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from view.MainView import MainWindow
 from view.SelectMethod import SelectMethod
 from controller.AI import AI
 
-@pytest.mark.usefixtures("qapp")
 class TestAI_NumberOfOutputs(unittest.TestCase):
-
+    @classmethod
+    def setUpClass(cls):
+        cls.app = QApplication(sys.argv)
+    
     def setUp(self):
         self.window = MainWindow(initial_folder=".")
         self.select_method = SelectMethod(self.window)
@@ -28,6 +30,10 @@ class TestAI_NumberOfOutputs(unittest.TestCase):
         prediction = ai_instance.classify_image(test_image_path)
         print(f"Prediction: {prediction}")
         self.assertEqual(len(prediction), 6, "The prediction should have 6 elements")
+    
+    @classmethod
+    def tearDownClass(cls):
+        del cls.app
 
 if __name__ == '__main__':
     unittest.main()
