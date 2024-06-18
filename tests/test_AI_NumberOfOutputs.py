@@ -11,6 +11,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from view.MainView import MainWindow
 from view.SelectMethod import SelectMethod
 from controller.AI import AI
+os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 
 class TestAI_NumberOfOutputs(unittest.TestCase):
     @classmethod
