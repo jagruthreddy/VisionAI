@@ -62,3 +62,12 @@ ENV NAME World
 
 # Start Xvfb and run the application when the container launches
 CMD ["bash", "-c", "xvfb-run -a python app.py"]
+
+
+# docker build -t python-app:v1 .
+# docker run python-app.py:v1
+# docker images
+# docker save -o python-app-v1.tar python-app.py:v1
+# docker load -i python-app-v1.tar
+# docker tag python-app.py:v1 jagruthh/python-app:v1
+# docker push jagruthh/python-app:v1
