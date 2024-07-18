@@ -1,6 +1,6 @@
 # VisionAI
 
-![VisionAI Logo](https://i.ibb.co/sq5J35B/Screenshot-2024-06-12-094922.png)
+![VisionAI Logo](https://i.ibb.co/T13fKL9/QQ.png)
 
 VisionAI is a PyQt5-based application that allows users to organize images using Vision AI or manual methods. The application provides features like selecting folders, navigating through history, sorting folders, viewing single images, opening sub folders, images summary and deleting folders.
 
