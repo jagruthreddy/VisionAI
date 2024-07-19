@@ -6,12 +6,12 @@ VisionAI is a PyQt5-based application that allows users to organize images using
 
 ## Table of Contents
 - [Features](#features)
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Testing](#testing)
 - [Datasets](#datasets)
 - [Project Structure](#project-structure)
-- [Burndown Chart](#burndown-chart)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
@@ -29,6 +29,9 @@ VisionAI is a PyQt5-based application that allows users to organize images using
 - **Web Demo:** View a web demo hosted on Hugging Face.
 - **Delete Folder:** Delete an album folder with confirmation.
 - **Information Dialog:** View instructions and information about the application.
+
+## Demo
+![Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHAydWU3MnE5dnZ4Njg4eXdzYnBkZDgwMzJnemw0Z3Z0azl1MmN0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y5rMvrTf8JABxYHAPh/giphy.gif)
 
 ## Installation
 
@@ -149,8 +152,6 @@ VisionAI/
 ```
 - app.py: The main entry point for the application.
 
-## Burndown Chart
-![Burndown Chart](https://i.ibb.co/9TLgm7g/Sprint-burndown.png)
 
 ## Technologies Used
 - <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" width="48" height="48"> **Python**: The primary programming language used for this project.
